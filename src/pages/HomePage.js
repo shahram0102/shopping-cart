@@ -1,4 +1,3 @@
-import ProductsList from "../components/Products/ProductList";
 import { products } from "../data";
 import Layout from "../Layout/Layout";
 import { useCart, useCartActions } from "../Providers/CartProvider";

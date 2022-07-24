@@ -1,0 +1,42 @@
+.formControl {
+  margin: 10px 0;
+}
+
+input {
+  width: 380px;
+  padding: 6px 12px;
+  display: block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease-in;
+  color: #6d28d9;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  color: #333;
+  font-size: 0.8rem;
+}
+
+input:focus {
+  border: 1px solid #6d28d9;
+}
+label {
+  display: flex;
+  margin-bottom: 10px;
+  font-weight: bolder;
+  align-items: center;
+  color: #6d28d9;
+}
+
+.error {
+  margin-top: 5px;
+  line-height: 1.2rem;
+  color: red;
+  display: flex;
+  max-width: 380px;
+  flex-wrap: wrap;
+}
