@@ -1,0 +1,39 @@
+.mainHeader {
+  width: 100%;
+  background-color: #d8b4fe;
+  height: 4.5rem;
+}
+
+.mainHeader nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.mainHeader nav ul {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.mainHeader li {
+  margin: 0 1rem;
+}
+
+.mainHeader a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.mainHeader a:hover {
+  color: #9333ea;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
