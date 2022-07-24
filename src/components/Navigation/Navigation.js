@@ -10,7 +10,7 @@ const Navigation = () => {
             <Link to="/">خانه</Link>
           </li>
           <li>
-            <Link to="/products">محصولات</Link>
+            <Link to="/cart">محصولات</Link>
           </li>
           <li>
             <Link to="/sign-up">ثبت نام</Link>
@@ -19,7 +19,6 @@ const Navigation = () => {
             <Link to="/log-in">ورود</Link>
           </li>
         </ul>
-        <div>shopping Icon</div>
       </nav>
     </header>
   );
