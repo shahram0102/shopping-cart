@@ -1,11 +1,23 @@
 import ProductsList from "../components/Products/ProductList";
 import { products } from "../data";
 import Layout from "../Layout/Layout";
-import { useCartActions } from "../Providers/CartProvider";
+import { useCart, useCartActions } from "../Providers/CartProvider";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
+const checkInCart = (cart, product) => {
+  return cart.find((c) => c.id === product.id);
+};
 
 const HomePage = () => {
   // reducer
   const dispatch = useCartActions();
+  const { cart } = useCart();
+
+  const addToCart = (product) => {
+    !checkInCart(cart, product) && toast.success(`${product.name} اضافه شد`);
+    dispatch({ type: "ADD_TO_CART", payLoad: product });
+  };
 
   return (
     <Layout>
@@ -16,16 +28,27 @@ const HomePage = () => {
               <section className="product" key={p.id}>
                 <div className="productImage">
                   <img src={p.image} alt={p.name} />
+                  {p.discount > 0 && (
+                    <span className="discountTag">
+                      {p.discount} % <br /> تخفیف
+                    </span>
+                  )}
                 </div>
                 <div className="productDesc">
-                  <p>{p.name}</p>
-                  <p>{p.price} تومان</p>
+                  <p className="nameProduct">{p.name}</p>
+                  <div className="pricesProduct">
+                    {p.discount != 0 && <del>{p.price} تومان</del>}
+                    <ins>{p.offPrice} تومان</ins>
+                  </div>
                 </div>
-                <button
-                  onClick={() => dispatch({ type: "ADD_TO_CART", payLoad: p })}
-                  className="btn primary"
-                >
-                  اضافه کردن به سبد خرید
+                <button onClick={() => addToCart(p)} className="btn primary">
+                  {checkInCart(cart, p) ? (
+                    <Link className="goToCart" to="/cart">
+                      ادامه سفارش
+                    </Link>
+                  ) : (
+                    "اضافه کردن به سبد خرید"
+                  )}
                 </button>
               </section>
             );

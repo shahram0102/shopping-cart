@@ -1,11 +1,11 @@
 import Layout from "../Layout/Layout";
 
-const NotFound = () => {
+const SignupPage = () => {
   return (
     <Layout>
-      <h1>NotFound</h1>
+      <h1>SignupPage</h1>
     </Layout>
   );
 };
 
-export default NotFound;
+export default SignupPage;

@@ -19,21 +19,38 @@ body {
 }
 
 .product {
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  overflow: hidden;
 }
 
 .product .productImage {
   width: 100%;
+  position: relative;
 }
 
 .product .productImage img {
+  border-radius: 10px;
   width: 100%;
   height: 300px;
   object-fit: cover;
+}
+
+.product .discountTag {
+  position: absolute;
+  padding: 15px;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.product:hover .discountTag {
+  animation: discount 1s infinite;
 }
 
 .container {
@@ -45,7 +62,31 @@ body {
   width: 100%;
   padding: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+}
+
+.productDesc .nameProduct {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #6d28d9;
+}
+
+.productDesc .pricesProduct {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pricesProduct del {
+  color: red;
+}
+
+.pricesProduct ins {
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #6d28d9;
 }
 
 .product .btn {
@@ -63,4 +104,24 @@ body {
   font-size: 1rem;
 }
 
+.goToCart {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-decoration: none;
+  color: #fff;
+}
 
+@keyframes discount {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
