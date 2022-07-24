@@ -1,8 +1,10 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Input from "../../common/Input/Input";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "./signup.module.css";
+import { signupUser } from "../../services/signupService";
+import { useState } from "react";
 
 // 1.initial state
 const initialValues = {
@@ -11,11 +13,6 @@ const initialValues = {
   phoneNumber: "",
   password: "",
   passwordConfirmation: "",
-};
-
-// 2.onsubmit
-const onSubmit = (values) => {
-  console.log(values);
 };
 
 // 3.validate
@@ -49,6 +46,24 @@ const validationSchema = yup.object({
 });
 
 const SignUp = () => {
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  // 2.onsubmit
+  const onSubmit = async (values) => {
+    const { name, email, phoneNumber, password } = values;
+    const userData = { name, email, phoneNumber, password };
+    try {
+      const { data } = await signupUser(userData);
+      console.log(data);
+      setError(null);
+      navigate("/");
+    } catch (error) {
+      if (error.response) {
+        setError(error.response.data.message);
+      }
+    }
+  };
+
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -93,9 +108,14 @@ const SignUp = () => {
           type="password"
         />
         <div className={styles.containerLinks}>
-          <button className={styles.registeredBtn} type="submit" disabled={!formik.isValid}>
+          <button
+            className={styles.registeredBtn}
+            type="submit"
+            disabled={!formik.isValid}
+          >
             ثبت نام
           </button>
+          {error && <p className={styles.errorSignUp}>{error}</p>}
           <Link to="/log-in">قبلا ثبت نام کرده اید؟</Link>
         </div>
       </form>

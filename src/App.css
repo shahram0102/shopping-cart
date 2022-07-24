@@ -118,6 +118,8 @@ button:disabled {
   height: 100%;
   text-decoration: none;
   color: #fff;
+  background-color: #6d28d9;
+  border-radius: 10px;
 }
 
 @keyframes discount {

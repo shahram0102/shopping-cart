@@ -2,13 +2,21 @@
   width: 100%;
   background-color: #d8b4fe;
   height: 4.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mainHeader nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
+  width: 100%;
+  max-width: 1170px;
 }
 
 .mainHeader nav ul {
@@ -21,42 +29,60 @@
   margin: 0 1rem;
 }
 
-.mainHeader nav li:nth-child(2) {
-  position: relative;
-}
 
-.mainHeader a {
+.mainHeader ul a {
   display: block;
   padding: 0.5rem 1rem;
   text-decoration: none;
   transition: all 0.3s ease-in;
   font-size: 1.1rem;
   color: #222;
+  height: 100%;
 }
 
-.mainHeader a:hover {
+.mainHeader ul a:hover {
   color: #9333ea;
   background-color: #fff;
   border-radius: 5px;
 }
 
-.mainHeader a:active{
+
+
+.rightNav{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 10px;
+   gap: 10px;
+   position: relative;
+}
+
+.rightNav .containerCartLogo{
+   padding: 0 15px;
+   border-radius: 10px;
+   display: block;
+   transition: all .3s ease-in;
+}
+
+.rightNav .containerCartLogo:hover{
+   color: #6d28d9;
    background-color: #fff;
 }
 
+
 .lengthProductInCart {
-  color: #6d28d9;
-  background-color: #fff;
-  display: flex;
-  width: 20px;
-  height: 20px;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  border-radius: 50%;
-  position: absolute;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  top: -13px;
-  right: -10px;
-  font-weight: bold;
-}
+   color: #6d28d9;
+   background-color: #fff;
+   display: flex;
+   width: 20px;
+   height: 20px;
+   justify-content: center;
+   align-items: center;
+   padding: 15px;
+   border-radius: 50%;
+   position: absolute;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+   top: 3px;
+   right: 3px;
+   font-weight: bold;
+ }

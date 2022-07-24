@@ -40,15 +40,16 @@ const HomePage = () => {
                     <ins>{p.offPrice} تومان</ins>
                   </div>
                 </div>
-                <button onClick={() => addToCart(p)} className="btn primary">
-                  {checkInCart(cart, p) ? (
-                    <Link className="goToCart" to="/cart">
-                      ادامه سفارش
-                    </Link>
-                  ) : (
-                    "اضافه کردن به سبد خرید"
-                  )}
-                </button>
+
+                {checkInCart(cart, p) ? (
+                  <Link className="goToCart" to="/cart">
+                    ادامه سفارش
+                  </Link>
+                ) : (
+                  <button onClick={() => addToCart(p)} className="btn primary">
+                    اضافه کردن به سبد خرید
+                  </button>
+                )}
               </section>
             );
           })}
