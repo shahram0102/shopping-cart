@@ -9,10 +9,11 @@ import NotFound from "./pages/NotFound";
 
 // React-Route-dom
 import { Routes, Route, Navigate } from "react-router-dom";
+import CartProvider from "./Providers/CartProvider";
 
 const App = () => {
   return (
-    <div className="App">
+    <CartProvider>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cart" element={<ProductsPage />} />
@@ -21,7 +22,7 @@ const App = () => {
         <Route path="not-found" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/not-found" />} />
       </Routes>
-    </div>
+    </CartProvider>
   );
 };
 

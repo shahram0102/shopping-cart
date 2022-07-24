@@ -1,11 +1,12 @@
 import ProductsList from "../components/Products/ProductList";
 import { products } from "../data";
 import Layout from "../Layout/Layout";
+import { useCartActions } from "../Providers/CartProvider";
 
 const HomePage = () => {
-   const addProductHandler = (product)=>{
-      console.log(product);
-   }
+  // reducer
+  const dispatch = useCartActions();
+
   return (
     <Layout>
       <main className="container">
@@ -18,9 +19,14 @@ const HomePage = () => {
                 </div>
                 <div className="productDesc">
                   <p>{p.name}</p>
-                  <p>{p.price} $</p>
+                  <p>{p.price} تومان</p>
                 </div>
-                <button onClick={()=>addProductHandler(p)} className="btn primary">اضافه کردن به سبد خرید</button>
+                <button
+                  onClick={() => dispatch({ type: "ADD_TO_CART", payLoad: p })}
+                  className="btn primary"
+                >
+                  اضافه کردن به سبد خرید
+                </button>
               </section>
             );
           })}

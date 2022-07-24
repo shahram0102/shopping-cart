@@ -26,7 +26,7 @@ body {
   overflow: hidden;
 }
 
-.product .productImage  {
+.product .productImage {
   width: 100%;
 }
 
@@ -39,18 +39,16 @@ body {
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-
-.product .productDesc{
+.product .productDesc {
   width: 100%;
   padding: 10px;
   display: flex;
   justify-content: space-between;
 }
 
-.product .btn{
+.product .btn {
   border: none;
   outline: none;
   padding: 10px 10px;
@@ -59,8 +57,10 @@ body {
 }
 
 .product .primary {
-  background-color: #6D28D9;
+  background-color: #6d28d9;
   color: #fff;
   width: 100%;
   font-size: 1rem;
 }
+
+

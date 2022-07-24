@@ -21,6 +21,10 @@
   margin: 0 1rem;
 }
 
+.mainHeader nav li:nth-child(2) {
+  position: relative;
+}
+
 .mainHeader a {
   display: block;
   padding: 0.5rem 1rem;
@@ -36,3 +40,23 @@
   border-radius: 5px;
 }
 
+.mainHeader a:active{
+   background-color: #fff;
+}
+
+.lengthProductInCart {
+  color: #6d28d9;
+  background-color: #fff;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  top: -13px;
+  right: -10px;
+  font-weight: bold;
+}
