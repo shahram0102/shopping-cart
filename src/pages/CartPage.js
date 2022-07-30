@@ -1,8 +1,8 @@
 import Layout from "../Layout/Layout";
 import { useCart, useCartActions } from "../Providers/CartProvider";
-import "./cartPage.css";
+import "../styles/cartPage.css";
 import { BiTrash } from "react-icons/bi";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const { cart } = useCart();
@@ -12,7 +12,9 @@ const CartPage = () => {
     return (
       <Layout>
         <main className="container">
-          <h2>محصولی در سبد خرید وجود ندارد</h2>
+          <h2 style={{ marginTop: "1rem", color: "#6d28d9" }}>
+            محصولی در سبد خرید وجود ندارد
+          </h2>
         </main>
       </Layout>
     );
@@ -29,8 +31,10 @@ const CartPage = () => {
                   <div className="cartImage">
                     <img src={item.image} alt={item.name} />
                   </div>
-                  <div>{item.name}</div>
-                  <div>{item.offPrice * item.quantity} تومان</div>
+                  <div className="describe-product">
+                    <span>{item.name}</span>
+                    <span>{item.offPrice * item.quantity} تومان</span>
+                  </div>
                   <div className="btnContainer">
                     <button
                       onClick={() =>
@@ -41,12 +45,12 @@ const CartPage = () => {
                     </button>
                     <span>{item.quantity}</span>
                     <button
-                      className={item.quantity == 1 && "remove"}
+                      className={item.quantity === 1 && "remove"}
                       onClick={() =>
                         dispatch({ type: "REMOVE_FROM_CART", payLoad: item })
                       }
                     >
-                      {item.quantity == 1 ? <BiTrash /> : "-"}
+                      {item.quantity === 1 ? <BiTrash /> : "-"}
                     </button>
                   </div>
                 </div>

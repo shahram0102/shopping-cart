@@ -1,0 +1,27 @@
+.checkoutContainer {
+  width: 90vw;
+  max-width: 1170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.checkoutList {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+}
+
+.checkoutItem {
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  flex: 1 1 auto;
+  justify-content: space-between;
+  padding: 10px;
+  max-width: 500px;
+}

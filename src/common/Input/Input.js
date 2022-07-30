@@ -1,4 +1,4 @@
-import styles from "./input.module.css";
+import styles from "../../styles/input.module.css";
 
 const Input = ({ placeholder, name, label, formik, type = "text" }) => {
   return (

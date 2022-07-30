@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../../Providers/CartProvider";
-import styles from "./navigation.module.css";
+import styles from "../../styles/navigation.module.css";
 import { RiShoppingCart2Line } from "react-icons/ri";
+import { useAuth } from "../../Providers/AuthProviders";
 
 const Navigation = () => {
   const { cart } = useCart();
+  const userData = useAuth();
   return (
     <header className={styles.mainHeader}>
       <nav>
@@ -13,10 +15,9 @@ const Navigation = () => {
             <Link to="/">خانه</Link>
           </li>
           <li>
-            <Link to="/sign-up">ثبت نام / ورود</Link>
-          </li>
-          <li>
-            <Link to="/log-in"></Link>
+            <Link to={userData ? "/profile" : "/log-in"}>
+              {userData ? "پروفایل" : "ثبت نام / ورود"}
+            </Link>
           </li>
         </ul>
 

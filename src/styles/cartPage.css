@@ -3,17 +3,19 @@
   width: 1170px;
   display: flex;
   justify-content: center;
-
+  padding: 1rem;
   margin-top: 2rem;
   gap: 1rem;
 }
 
 .cartItemList {
   border: 1px solid #ccc;
-  display: flex;
   flex-direction: column;
   border-radius: 5px;
   flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  column-gap: 1rem;
   padding: 10px;
 }
 
@@ -25,6 +27,24 @@
   overflow: hidden;
   border-radius: 10px;
   border-bottom-left-radius: 0;
+  justify-content: space-between;
+}
+
+.describe-product {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  width: 100px;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin-right: .5rem;
+  height: 100%;
+  padding: 2rem 0;
+}
+
+.describe-product span {
+  font-size: 1.1rem;
 }
 
 .cartItem .cartImage {
@@ -60,8 +80,8 @@
   background-color: #fff;
   color: #6d28d9;
 }
-.btnContainer button{
-   cursor: pointer;
+.btnContainer button {
+  cursor: pointer;
 }
 .btnContainer button:first-child {
   border-radius: 0 5px 5px 0;
@@ -71,9 +91,9 @@
   border-radius: 5px 0 0 5px;
 }
 
-.btnContainer button:last-child.remove{
-   color: red;
-   border: 1px solid red;
+.btnContainer button:last-child.remove {
+  color: red;
+  border: 1px solid red;
 }
 
 .btnContainer span {
@@ -87,7 +107,6 @@
   flex-direction: column;
   border-radius: 5px;
   gap: 1rem;
-  background-color: chartreuse;
   padding: 10px;
   width: 30%;
   max-height: 250px;
@@ -102,17 +121,31 @@
   align-items: center;
 }
 
-.btnCheckout{
-   color: #fff;
-   background-color: #6d28d9;
-   border: none;
-   padding: 10px;
-   width: 100%;
-   border-radius: 5px;
-   font-size: 1.1rem;
-   position: absolute;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   cursor: pointer;
+.btnCheckout {
+  color: #fff;
+  background-color: #6d28d9;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .cartContainer {
+    flex-direction: column !important;
+    padding: 1rem;
+  }
+  .cartSummery {
+    width: 100%;
+  }
+
+  .describe-product {
+
+  }
 }

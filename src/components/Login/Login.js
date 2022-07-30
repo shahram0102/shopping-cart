@@ -1,10 +1,12 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Input from "../../common/Input/Input";
-import { useNavigate,Link } from "react-router-dom";
-import styles from "./login.module.css";
+import { useNavigate, Link } from "react-router-dom";
+import styles from "../../styles/login.module.css";
 import { loginUser } from "../../services/loginService";
 import { useState } from "react";
+import { useAuthActions } from "../../Providers/AuthProviders";
+import { useQuery } from "../Hooks/useQuery";
 
 // 1.initial state
 const initialValues = {
@@ -22,15 +24,19 @@ const validationSchema = yup.object({
 });
 
 const Login = () => {
+  const query = useQuery();
+  const redirect = query.get("redirect") || "/";
   const [error, setError] = useState(null);
+  const setAuth = useAuthActions();
   const navigate = useNavigate();
   // 2.onsubmit
   const onSubmit = async (values) => {
     try {
       const { data } = await loginUser(values);
-      console.log(data);
+      setAuth(data);
+      localStorage.setItem("authState", JSON.stringify(data));
       setError(null);
-      navigate("/");
+      navigate(redirect);
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message);
@@ -70,7 +76,7 @@ const Login = () => {
             ورود
           </button>
           {error && <p className={styles.errorLogin}>{error}</p>}
-          <Link to="/sign-up">حساب کاربری ندارید؟</Link>
+          <Link to={`/sign-up?redirect=${redirect}`}>حساب کاربری ندارید؟</Link>
         </div>
       </form>
     </div>

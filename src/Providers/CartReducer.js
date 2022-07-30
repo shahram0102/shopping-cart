@@ -13,10 +13,6 @@ const cartReducer = (state, action) => {
         updatedItem.quantity++;
         updatedCart[updatedCartIndex] = updatedItem;
       }
-      // const total = updatedCart.reduce((acc, cur) => {
-      //   return acc + cur.price * cur.quantity;
-      // }, 0);
-      console.log(updatedCart);
       return {
         cart: updatedCart,
         total: state.total + action.payLoad.offPrice,
@@ -33,9 +29,6 @@ const cartReducer = (state, action) => {
         const filteredItem = updatedCart.filter(
           (p) => p.id !== action.payLoad.id
         );
-         //  const total = updatedCart.reduce((acc, cur) => {
-         //    return acc + cur.price * cur.quantity;
-         //  }, 0);
         return {
           total: state.total - action.payLoad.offPrice,
           cart: filteredItem,
@@ -43,9 +36,6 @@ const cartReducer = (state, action) => {
       }
       updatedItem.quantity--;
       updatedCart[updatedIndex] = updatedItem;
-      // const total = updatedCart.reduce((acc, cur) => {
-      //   return acc + cur.price * cur.quantity;
-      // }, 0);
 
       return {
         total: state.total - action.payLoad.offPrice,

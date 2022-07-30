@@ -2,9 +2,11 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Input from "../../common/Input/Input";
 import { useNavigate, Link } from "react-router-dom";
-import styles from "./signup.module.css";
+import styles from "../../styles/signup.module.css";
 import { signupUser } from "../../services/signupService";
-import { useState } from "react";
+import {  useState } from "react";
+import {  useAuthActions } from "../../Providers/AuthProviders";
+import { useQuery } from "../Hooks/useQuery";
 
 // 1.initial state
 const initialValues = {
@@ -46,17 +48,26 @@ const validationSchema = yup.object({
 });
 
 const SignUp = () => {
+  const query = useQuery();
+  const redirect = query.get("redirect") || "/";
   const [error, setError] = useState(null);
+  const setAuth = useAuthActions();
   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     if (userAuth) navigate(redirect);
+//   }, [redirect, userAuth]);
+
   // 2.onsubmit
   const onSubmit = async (values) => {
     const { name, email, phoneNumber, password } = values;
     const userData = { name, email, phoneNumber, password };
     try {
       const { data } = await signupUser(userData);
-      console.log(data);
+      setAuth(data);
+      localStorage.setItem("authState", JSON.stringify(data));
       setError(null);
-      navigate("/");
+      navigate(redirect,{replace:true});
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message);
@@ -116,7 +127,9 @@ const SignUp = () => {
             ثبت نام
           </button>
           {error && <p className={styles.errorSignUp}>{error}</p>}
-          <Link to="/log-in">قبلا ثبت نام کرده اید؟</Link>
+          <Link to={`/log-in?redirect=${redirect}`}>
+            قبلا ثبت نام کرده اید؟
+          </Link>
         </div>
       </form>
     </div>

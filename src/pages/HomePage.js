@@ -3,6 +3,7 @@ import Layout from "../Layout/Layout";
 import { useCart, useCartActions } from "../Providers/CartProvider";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import "../styles/homePage.css";
 
 const checkInCart = (cart, product) => {
   return cart.find((c) => c.id === product.id);
@@ -14,7 +15,11 @@ const HomePage = () => {
   const { cart } = useCart();
 
   const addToCart = (product) => {
-    !checkInCart(cart, product) && toast.success(`${product.name} اضافه شد`);
+    !checkInCart(cart, product) &&
+      toast.success(`${product.name} اضافه شد`, {
+        position: "top-center",
+        style: { width: "350px" },
+      });
     dispatch({ type: "ADD_TO_CART", payLoad: product });
   };
 
@@ -36,13 +41,17 @@ const HomePage = () => {
                 <div className="productDesc">
                   <p className="nameProduct">{p.name}</p>
                   <div className="pricesProduct">
-                    {p.discount != 0 && <del>{p.price} تومان</del>}
+                    {p.discount !== 0 && <del>{p.price} تومان</del>}
                     <ins>{p.offPrice} تومان</ins>
                   </div>
                 </div>
 
                 {checkInCart(cart, p) ? (
-                  <Link className="goToCart" to="/cart">
+                  <Link
+                    style={{ height: "100%" }}
+                    className="btn goToCart"
+                    to="/cart"
+                  >
                     ادامه سفارش
                   </Link>
                 ) : (
